@@ -1,53 +1,137 @@
-import { useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from 'axios';
+import Dropdown from './dropdown';
+import { Link } from 'react-router-dom';
 function App() {
-  const [todos, setTodos] = useState([]);
-
+  const [title, setTitle] = useState([]);
+  
   const inputRef = useRef();
 
-  const handleAddTodo = () => {
+  const handleAddTodo = async event => {
+    event.preventDefault()  
+    
+    if (inputRef.current.value.trim() === "") {
+      return toast.error("Input is required");
+    } else {
+     
     const text = inputRef.current.value;
-    const newItem = { completed: false, text };
-    setTodos([...todos, newItem]);
-    inputRef.current.value = "";
-  };
+    const newItem = { completed: false, title:text };
+    setTitle([...title,newItem]);
+   
+  try {
+    const response = await fetch(
+      `http://localhost:3100/todo`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newItem),
+      }
+    )
+    if (response.status === 201) {
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
+  inputRef.current.value = "";
+}
 
   const handleItemDone = (index) => {
-    const newTodos = [...todos];
+    const newTodos = [...title];
     newTodos[index].completed = !newTodos[index].completed;
-    setTodos(newTodos);
+    setTitle(newTodos);
   };
 
-  const handleDeleteItem = (index) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1)
-    setTodos(newTodos)
+  const handleDeleteItem = async(index) => {
+    const newTodos = [...title];
+    const newOne=newTodos.splice(index, 1)
+    const todoID=newOne[0]._id
+    
+    try {
+      const response = await axios.delete(`https://backend-einkauflist.onrender.com/${todoID}`);
+      
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+    setTitle(newTodos)
   }
+
+  const handleSelect = async (option) => {
+    const text = option.label;
+   
+   
+    if (title.some(item => item.title === text)) {
+      return toast.error("Item already exists");
+    } else {
+    const newItem = { completed: false, title:text };
+    setTitle([...title,newItem]);
+    //console.log(newItem)
+    try {
+      const response = await fetch(
+        `https://backend-einkauflist.onrender.com/todo`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newItem),
+        }
+      )
+      if (response.status === 201) {
+        // handle success
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  };}
+
+  useEffect(() => {
+    fetch('https://backend-einkauflist.onrender.com')
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        //console.log(data);
+        setTitle(data);
+      });
+  }, []);
 
   return (
     <div className="App">
-      <h2>To Do List</h2>
+      <Link to="/Tasks">
+        <button className="answer-btn">Tasks</button>
+      </Link>
+      <h1>Shopping List</h1>
+      <ToastContainer />
       <div className="to-do-container">
         <ul>
-          {todos.map(({ text, completed }, index) => {
+          {title.map(({ title, completed }, index) => {
             return (
-              <div className="item">
-                <li
+              <div  key={title} className="item">
+                <li  
                   className={completed ? "done" : ""}
-                  key={index}
+                  
                   onClick={() => handleItemDone(index)}
                 >
-                  {text}
+                  {title}
                 </li>
                 <span onClick={() => handleDeleteItem(index)} className="trash">❌</span>
               </div>
             );
           })}
         </ul>
-        <input ref={inputRef} placeholder="Enter item..." />
+
+        <input required  ref={inputRef}  placeholder="Enter item..." />
         <button onClick={handleAddTodo}>Add</button>
+        
       </div>
+      <Dropdown handleSelect={handleSelect} />
     </div>
   );
 }
