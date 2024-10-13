@@ -22,7 +22,7 @@ function App() {
    
   try {
     const response = await fetch(
-      `https://backend-einkauflist.onrender.com/todo`,
+      `http://localhost:8080/todo`,
       {
         method: 'POST',
         headers: {
