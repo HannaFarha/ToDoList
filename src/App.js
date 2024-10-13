@@ -53,11 +53,12 @@ function App() {
     //const todoID=newOne[0]._id
     const todoToDelete=title[title.length-1]
     const todoID = todoToDelete.title;
+    console.log(todoToDelete)
     try {
       const response = await fetch(`https://backend-einkauflist.onrender.com/${todoID}`, {
         method: 'DELETE', 
       });
-      console.log("deleted");
+      console.log(response);
     } catch (error) {
       console.error(error);
     }
@@ -76,7 +77,7 @@ function App() {
     //console.log(newItem)
     try {
       const response = await fetch(
-        `https://backend-einkauflist.onrender.com`,
+        `https://backend-einkauflist.onrender.com/todo`,
         {
           method: 'POST',
           headers: {
@@ -99,7 +100,7 @@ function App() {
         return res.json();
       })
       .then((data) => {
-       // console.log(data);
+        console.log(data);
         setTitle(data);
       });
   }, []);
