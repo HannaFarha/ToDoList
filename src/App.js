@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from 'axios';
 import Dropdown from './dropdown';
 import { Link } from 'react-router-dom';
 function App() {
@@ -23,7 +22,7 @@ function App() {
    
   try {
     const response = await fetch(
-      `https://backend-einkauflist.onrender.com/todo`,
+      `http://localhost:8080/todo`,
       {
         method: 'POST',
         headers: {
@@ -49,17 +48,20 @@ function App() {
 
   const handleDeleteItem = async(index) => {
     const newTodos = [...title];
+    setTitle(newTodos)
     const newOne=newTodos.splice(index, 1)
-    const todoID=newOne[0]._id
-    
+    //const todoID=newOne[0]._id
+    const todoToDelete=title[title.length-1]
+    const todoID = todoToDelete.title;
     try {
-      const response = await axios.delete(`https://backend-einkauflist.onrender.com/${todoID}`);
-      
-      console.log(response.data);
+      const response = await fetch(`https://backend-einkauflist.onrender.com/${todoID}`, {
+        method: 'DELETE', 
+      });
+      console.log("deleted");
     } catch (error) {
       console.error(error);
     }
-    setTitle(newTodos)
+    
   }
 
   const handleSelect = async (option) => {
@@ -92,12 +94,12 @@ function App() {
   };}
 
   useEffect(() => {
-    fetch('https://backend-einkauflist.onrender.com')
+    fetch('https://backend-einkauflist.onrender.com/')
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        //console.log(data);
+       // console.log(data);
         setTitle(data);
       });
   }, []);
