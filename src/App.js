@@ -53,7 +53,7 @@ function App() {
     //const todoID=newOne[0]._id
     const todoToDelete=title[title.length-1]
     const todoID = todoToDelete.title;
-    console.log(todoToDelete)
+    //console.log(todoToDelete)
     try {
       const response = await fetch(`https://backend-einkauflist.onrender.com/${todoID}`, {
         method: 'DELETE', 
