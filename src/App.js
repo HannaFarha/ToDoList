@@ -76,7 +76,7 @@ function App() {
     //console.log(newItem)
     try {
       const response = await fetch(
-        `https://backend-einkauflist.onrender.com/todo`,
+        `https://backend-einkauflist.onrender.com`,
         {
           method: 'POST',
           headers: {
