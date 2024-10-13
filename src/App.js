@@ -22,7 +22,7 @@ function App() {
    
   try {
     const response = await fetch(
-      `https://backend-einkauflist.onrender.com/todo`,
+      `http://localhost:8080/todo`,
       {
         method: 'POST',
         headers: {
@@ -53,12 +53,11 @@ function App() {
     //const todoID=newOne[0]._id
     const todoToDelete=title[title.length-1]
     const todoID = todoToDelete.title;
-    //console.log(todoToDelete)
     try {
       const response = await fetch(`https://backend-einkauflist.onrender.com/${todoID}`, {
         method: 'DELETE', 
       });
-      console.log(response);
+      console.log("deleted");
     } catch (error) {
       console.error(error);
     }
@@ -100,7 +99,7 @@ function App() {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+       // console.log(data);
         setTitle(data);
       });
   }, []);
