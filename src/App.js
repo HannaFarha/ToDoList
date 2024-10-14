@@ -49,7 +49,8 @@ function App() {
   const handleDeleteItem = async(index) => {
     const newTodos = [...title];
     setTitle(newTodos)
-    const newOne=newTodos.splice(index, 1)
+    // const newOne=
+    newTodos.splice(index, 1)
     //const todoID=newOne[0]._id
     const todoToDelete=title[title.length-1]
     const todoID = todoToDelete.title;
@@ -57,7 +58,7 @@ function App() {
       const response = await fetch(`https://backend-einkauflist.onrender.com/${todoID}`, {
         method: 'DELETE', 
       });
-      console.log("deleted");
+      console.log(response);
     } catch (error) {
       console.error(error);
     }
