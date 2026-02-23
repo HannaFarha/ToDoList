@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Dark Mode - Dark Navy & Gold Theme (matching Instagram screenshot) */
+  --background: 15 25 35;
+  --foreground: 240 240 240;
+  --surface: 24 34 48;
+  --card: 24 34 48;
+  --card-foreground: 240 240 240;
+  --popover: 24 34 48;
+  --popover-foreground: 240 240 240;
+  --primary: 218 185 70;
+  --primary-foreground: 15 25 35;
+  --secondary: 35 48 65;
+  --secondary-foreground: 225 225 225;
+  --muted: 35 48 65;
+  --muted-foreground: 155 165 180;
+  --accent: 218 185 70;
+  --accent-foreground: 15 25 35;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: 38 52 70;
+  --input: 38 52 70;
+  --ring: 218 185 70;
+  --radius: 0.75rem;
+
+  --gold: 218 185 70;
+  --gold-light: 245 220 120;
+  --gold-dark: 170 140 30;
+  --insta-blue: 56 151 240;
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback", system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", monospace;
+
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-surface: rgb(var(--surface));
+  --color-card: rgb(var(--card));
+  --color-card-foreground: rgb(var(--card-foreground));
+  --color-popover: rgb(var(--popover));
+  --color-popover-foreground: rgb(var(--popover-foreground));
+  --color-primary: rgb(var(--primary));
+  --color-primary-foreground: rgb(var(--primary-foreground));
+  --color-secondary: rgb(var(--secondary));
+  --color-secondary-foreground: rgb(var(--secondary-foreground));
+  --color-muted: rgb(var(--muted));
+  --color-muted-foreground: rgb(var(--muted-foreground));
+  --color-accent: rgb(var(--accent));
+  --color-accent-foreground: rgb(var(--accent-foreground));
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: rgb(var(--border));
+  --color-input: rgb(var(--input));
+  --color-ring: rgb(var(--ring));
+
+  --color-gold: rgb(var(--gold));
+  --color-gold-light: rgb(var(--gold-light));
+  --color-gold-dark: rgb(var(--gold-dark));
+  --color-insta-blue: rgb(var(--insta-blue));
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Hide scrollbar for highlights */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
