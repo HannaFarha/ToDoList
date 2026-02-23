@@ -1,6 +1,50 @@
-*{
-font-size: 30px;
+* {
+  font-size: 30px; /* Consider changing this for smaller screens */
+}
 
+.confirm-delete-all {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 90%; /* Make the dialog width responsive */
+  max-width: 400px; /* Set a max width for larger screens */
+}
+
+.confirm-delete-all p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.confirm-delete-all button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.confirm-delete-all .yes-button {
+  background-color: #ff9900;
+  color: #fff;
+  margin-right: 10px;
+}
+.confirm-delete-all .yes-button:hover {
+  background-color: red;
+}
+.confirm-delete-all .cancel-button:hover {
+  background-color: #3d3d3d;
+}
+.confirm-delete-all .cancel-button {
+  background-color: #aaa;
+  color: #fff;
 }
 
 .App {
@@ -33,4 +77,32 @@ font-size: 30px;
 
 .trash {
   cursor: pointer;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+  * {
+    font-size: 20px; /* Reduce font size for smaller screens */
+  }
+
+  .confirm-delete-all {
+    padding: 15px; /* Reduce padding */
+  }
+
+  .confirm-delete-all p {
+    font-size: 16px; /* Adjust font size for the paragraph */
+  }
+
+  .confirm-delete-all button {
+    padding: 8px 15px; /* Adjust button size */
+  }
+
+  .App {
+    margin: 20px 10px; /* Reduce margins on smaller screens */
+    padding: 15px 10px; /* Adjust padding */
+  }
+
+  .to-do-container ul li {
+    width: 100%; /* Make list items full width */
+  }
 }

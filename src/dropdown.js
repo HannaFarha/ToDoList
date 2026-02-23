@@ -15,8 +15,6 @@ const Dropdown = ({ handleSelect }) => {
     { value: 'pommes', label: 'pommes' },
     { value: 'Cola', label: 'Cola' },
     { value: 'Milch', label: 'Milch' },
-    
-
   ];
   const options2 = [
     { value: 'Zwieble', label: 'Zwieble' },
@@ -74,92 +72,92 @@ const Dropdown = ({ handleSelect }) => {
     setActiveDropdown2(false);
     setActiveDropdown3(false);
     setActiveDropdown(false);
-    
+
   }
   const handleSelectOption = async (option) => {
-    
+
     handleSelect(option);
-     setIsOpen(false);
-     setActiveDropdown(false);
+    setIsOpen(false);
+    setActiveDropdown(false);
   };
   const handleSelectOption2 = async (option) => {
-  
+
     handleSelect(option);
-     setIsOpen2(false);
-     setActiveDropdown2(false);
+    setIsOpen2(false);
+    setActiveDropdown2(false);
   };
   const handleSelectOption3 = async (option) => {
-   
+
     handleSelect(option);
-     setIsOpen3(false);
-     setActiveDropdown3(false);
+    setIsOpen3(false);
+    setActiveDropdown3(false);
   };
   const handleSelectOption4 = async (option) => {
-   
+
     handleSelect(option);
-     setIsOpen4(false);
-     setActiveDropdown4(false);
+    setIsOpen4(false);
+    setActiveDropdown4(false);
   };
 
   return (
     <div className="dropdown-container">
-  {!activeDropdown2 && !activeDropdown3 && !activeDropdown4 &&( <div className="dropdown">
-    <button className="dropdown-toggle" onClick={handleToggle}>
-      Cola Products
-    </button>
-    {isOpen && (
-      <ul className={`dropdown-options ${isOpen ? 'show' : ''}`}>
-        {options.map((option) => (
-          <li key={option.value} onClick={() => handleSelectOption(option)}>
-            {option.label}
-          </li>
-        ))}
-      </ul>
-    )}
-  </div>)}
-  {!activeDropdown && !activeDropdown3 && !activeDropdown4 &&(<div className="dropdown">
-    <button className="dropdown-toggle" onClick={handleToggle2}>
-      Food Products
-    </button>
-    {isOpen2 && (
-      <ul className={`dropdown-options ${isOpen2 ? 'show' : ''}`}>
-        {options2.map((option) => (
-          <li key={option.value} onClick={() => handleSelectOption2(option)}>
-            {option.label}
-          </li>
-        ))}
-      </ul>
-    )}
-  </div>)}
-  {!activeDropdown2 && !activeDropdown && !activeDropdown4 &&(<div className="dropdown">
-    <button className="dropdown-toggle" onClick={handleToggle3}>
-      Stuff Products
-    </button>
-    {isOpen3 && (
-      <ul className={`dropdown-options ${isOpen3 ? 'show' : ''}`}>
-        {options3.map((option) => (
-          <li key={option.value} onClick={() => handleSelectOption3(option)}>
-            {option.label}
-          </li>
-        ))}
-      </ul>
-    )}
-  </div>)}
-  {!activeDropdown2 && !activeDropdown3 && !activeDropdown &&(<div className="dropdown">
-    <button className="dropdown-toggle" onClick={handleToggle4}>
-      Stuff Products
-    </button>
-    {isOpen4 && (
-      <ul className={`dropdown-options ${isOpen4 ? 'show' : ''}`}>
-        {options4.map((option) => (
-          <li key={option.value} onClick={() => handleSelectOption4(option)}>
-            {option.label}
-          </li>
-        ))}
-      </ul>
-    )}
-  </div>)}
-</div>
+      {!activeDropdown2 && !activeDropdown3 && !activeDropdown4 && (<div className="dropdown">
+        <button className="dropdown-toggle" onClick={handleToggle}>
+          Cola Products
+        </button>
+        {isOpen && (
+          <ul className={`dropdown-options ${isOpen ? 'show' : ''}`}>
+            {options.map((option) => (
+              <li key={option.value} onClick={() => handleSelectOption(option)}>
+                {option.label}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>)}
+      {!activeDropdown && !activeDropdown3 && !activeDropdown4 && (<div className="dropdown">
+        <button className="dropdown-toggle" onClick={handleToggle2}>
+          Food Product
+        </button>
+        {isOpen2 && (
+          <ul className={`dropdown-options ${isOpen2 ? 'show' : ''}`}>
+            {options2.map((option) => (
+              <li key={option.value} onClick={() => handleSelectOption2(option)}>
+                {option.label}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>)}
+      {!activeDropdown2 && !activeDropdown && !activeDropdown4 && (<div className="dropdown">
+        <button className="dropdown-toggle" onClick={handleToggle3}>
+          Carton Products
+        </button>
+        {isOpen3 && (
+          <ul className={`dropdown-options ${isOpen3 ? 'show' : ''}`}>
+            {options3.map((option) => (
+              <li key={option.value} onClick={() => handleSelectOption3(option)}>
+                {option.label}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>)}
+      {!activeDropdown2 && !activeDropdown3 && !activeDropdown && (<div className="dropdown">
+        <button className="dropdown-toggle" onClick={handleToggle4}>
+          daily Products
+        </button>
+        {isOpen4 && (
+          <ul className={`dropdown-options ${isOpen4 ? 'show' : ''}`}>
+            {options4.map((option) => (
+              <li key={option.value} onClick={() => handleSelectOption4(option)}>
+                {option.label}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>)}
+    </div>
   );
 };
 

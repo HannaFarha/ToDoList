@@ -1,0 +1,96 @@
+.App2 {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.to-do-container2 {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.item2:last-child {
+  border-bottom: none;
+}
+
+.li {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.trash2 {
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.input {
+  width: 93%;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+/* Responsive design for phone screens */
+
+@media only screen and (max-width: 600px) {
+  .to-do-container2 {
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  .item2 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item2 li {
+    font-size: 16px;
+  }
+
+  .trash2 {
+    font-size: 20px;
+  }
+
+  .trash2 input {
+    font-size: 16px;
+  }
+
+  .trash2 button {
+    padding: 10px 15px;
+  }
+}
